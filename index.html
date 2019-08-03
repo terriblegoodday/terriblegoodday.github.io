@@ -11,7 +11,7 @@
         }
 
         header {
-        padding: 50px 0 50px;
+        padding: 15px 0 15px;
         }
 
         footer {
@@ -29,21 +29,23 @@
         }
         .container {
         display: grid;
-        max-width: 1024px;
+        max-width: 782px;
         margin: 0 auto;
         padding: 0 20px 0;
-        grid-template-columns: repeat(auto-fit, minmax(230px, 4fr));
+        grid-template-columns: repeat(4, 4fr);
         grid-gap: 5px;
         align-items: center;
+        box-sizing: border-box;
         }
 
         .col {
         /*   background: rgba(0, 0, 0, .12); */
-        box-shadow: inset 0px 0px 0px 2px rgba(0,0,0,.2);
-        height: 230px;
+        box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,.2);
+        height: 182px;
         padding: 10px;
         padding-left: 14px;
         background-size: cover;
+        box-sizing: border-box;
         }
         .col h2 {
         margin-top: 5px;
