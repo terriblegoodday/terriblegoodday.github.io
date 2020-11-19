@@ -1,0 +1,453 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Headers of Request &amp; Response</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+</head>
+<body>
+<div class="container"><h1>Headers of Request &amp; Response</h1>
+
+<h2>example.com</h2>
+
+<h3>Request</h3>
+
+<pre><code>GET / HTTP/1.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+Host: example.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.1 Safari/605.1.15
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+</code></pre>
+
+<h3>Response</h3>
+
+<pre><code>HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Vary: Accept-Encoding
+Last-Modified: Thu, 17 Oct 2019 07:18:26 GMT
+Age: 176923
+Content-Encoding: gzip
+Expires: Thu, 26 Nov 2020 15:54:51 GMT
+Cache-Control: max-age=604800
+Date: Thu, 19 Nov 2020 15:54:51 GMT
+Content-Length: 648
+ETag: &quot;3147526947&quot;
+Accept-Ranges: bytes
+Server: ECS (nyb/1D18)
+X-Cache: HIT
+</code></pre>
+
+<p>Everything seems OK 🥲</p>
+
+<h2>twitter.com</h2>
+
+<h3>Request</h3>
+
+<pre><code>:method: POST
+:scheme: https
+:authority: api2.branch.io
+:path: /v1/profile
+Accept: */*
+Content-Type: application/x-www-form-urlencoded
+Origin: https://twitter.com
+Content-Length: 225
+Accept-Language: en-us
+Host: api2.branch.io
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.1 Safari/605.1.15
+Referer: https://twitter.com/
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+</code></pre>
+
+<h3>Response</h3>
+
+<pre><code>:status: 200
+Content-Type: application/json; charset=utf-8
+Access-Control-Allow-Origin: *
+Via: 1.1 54dc93d23ebec5cb4513ba0ee9d6c2d8.cloudfront.net (CloudFront)
+Date: Thu, 19 Nov 2020 15:42:06 GMT
+Content-Length: 139
+X-Content-Type-Options: nosniff
+ETag: W/&quot;8b-t2bMSN9g665WCxOyEYd16foku9Y&quot;
+x-amz-cf-id: pIsrdxZRCzl4hBn08AaA2CZoGa_CSqGP6CUB7lrqdjQEh6v1W9MUtQ==
+x-branch-request-id: 4dc7e26706ed470a95e5dff65d0f71bb-2020111915
+x-powered-by: Express
+Server: openresty
+x-amz-cf-pop: ARN54-C1
+x-cache: Miss from cloudfront
+</code></pre>
+
+<p>This took me to <code>https://api2.branch.io/v1/profile</code> &amp; it seems as though Twitter not only uses <a href="branch.io">branch.io</a> as their API endpoint but also as analytics endpoint and deep linking endpoint. Visiting the <a href="branch.io">branch.io</a> website reveals more information:</p>
+
+<blockquote>
+<p>Branch handles all the complexity to ensure your links work across every platform and channel. Our strong link matching guarantees your users are delivered exactly where you want them. From deep linked re-engagement ads to web and email campaigns that seamlessly continue the journey even after users pause to install your app, Branch helps you offer seamless experiences that drive better performance in all of your channels.</p>
+
+<p>Branch's attribution technology is designed specifically for the world where universal identifiers such as IDFA and GAID don’t exist. The Branch system uses an industry-unique, anonymous, predictive algorithm that incorporates historical attributions to deliver high accuracy attribution where there is no universal ID. This means where the rest of the industry is reliant on basic probabilistic methods with accuracy rates of 60-70%, Branch can deliver superior, more accurate attributions.</p>
+
+<p>You want to provide users with the strongest possible digital experience every time they connect with your brand, but as they switch between channels and devices, it becomes more difficult to make sure that happens. From customizable and targeted mobile banners to QR codes, seamless app login from email, text-me-the-app, and more, Branch helps you create seamless experiences across touchpoints and engage users in your app.</p>
+</blockquote>
+
+<p><strong>It also seems as though their (branch.io) backend is powered by Express (node.js) 💉😝🤩</strong></p>
+
+<h2>farfetch.com</h2>
+
+<h3>Request</h3>
+
+<pre><code>:method: POST
+:scheme: https
+:authority: api.farfetch.net
+:path: /ext/marketing/v1/trackings
+Accept: application/json
+Content-Type: application/json;charset=utf-8
+Origin: https://www.farfetch.com
+Content-Length: 501
+Accept-Language: en-us
+Host: api.farfetch.net
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.1 Safari/605.1.15
+Referer: https://www.farfetch.com/
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+</code></pre>
+
+<h3>Response</h3>
+
+<pre><code>:status: 202
+Access-Control-Allow-Origin: https://www.farfetch.com
+Pragma: no-cache
+Content-Security-Policy: sandbox; default-src 'none'; frame-ancestors 'none';
+Content-Disposition: attachment; filename='api.json'
+Set-Cookie: bm_sz=6D02FDAFE87C0279A662D6E3942017D5~YAAQXjArFxlTON91AQAA9zoz4Qn9ISxWllfyuKeHZQmzfT15X7RcTMQg5tIpxjC/GzGItZ0tQRgNEYMzC8jo8bQ1bxcjv0SQe6msLw5Br+UC1G6njHWeOdx2pjfVmnh7ICXrZVBh/xLD/BFJsTh9ps8/LigLUBao/ZxFl6TTwXB3WAnG68sVeX1tyBO06EzQjuo=; Domain=.farfetch.net; Path=/; Expires=Thu, 19 Nov 2020 19:50:32 GMT; Max-Age=14400; HttpOnly
+Set-Cookie: _abck=DCDC0D4A896AF6D0C51868A4F7E0B7E5~-1~YAAQXjArFxpTON91AQAA9zoz4QTvONm+2jqMkanXdx1fF2pFbkEa0Cx2NsU1ZNtRsXqMFGYhMWLFzyKRQB55+Z3FpF/Pwrw22GP2oji0XXba1ry2oVhEX0Fvi3vpE4nywXEq9AYPEWoV2vuIDAJVlF9YvgNZ51tsqDdkqTf9TuI6LZE0GE12uzuCArCCIri9tBIUoz18D/fNPKDUTBH8VYI/EaqthOs2pmU/F6RqtR32vS5RiWhApLp9XsXPtsBgL0mMi0D92YqJdO0EcLbaEoUMxrBmx9vG+ok4DM65HMvoNGpHzKrDhJlltv8=~-1~-1~-1; Domain=.farfetch.net; Path=/; Expires=Fri, 19 Nov 2021 15:50:32 GMT; Max-Age=31536000; Secure
+Expires: Thu, 19 Nov 2020 15:50:32 GMT
+Cache-Control: max-age=0, no-cache, no-store
+Date: Thu, 19 Nov 2020 15:50:32 GMT
+Content-Length: 0
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=63072000; includeSubDomains;
+</code></pre>
+
+<blockquote>
+<p>The HyperText Transfer Protocol (HTTP) 202 Accepted response status code indicates that the request has been accepted for processing, but the processing has not been completed; in fact, processing may not have started yet. The request might or might not eventually be acted upon, as it might be disallowed when processing actually takes place.</p>
+
+<p>X-Frame-Options allows content publishers to prevent their own content from being used in an invisible frame by attackers. The DENY option is the most secure, preventing any use of the current page in a frame.</p>
+</blockquote>
+
+<p>Also, set-cookie HTTP response header is used to send a cookie from the server to the user agent. WoW 🤩🌟✨</p>
+
+<p>Also, on <code>X-Content-Type-Options: nosniff</code>:</p>
+
+<blockquote>
+<p>This header was introduced by Microsoft in IE 8 as a way for webmasters to block content sniffing that was happening and could transform non-executable MIME types into executable MIME types. Since then, other browsers have introduced it, even if their MIME sniffing algorithms were less aggressive.</p>
+</blockquote>
+
+<p>So we don't sniff anything anymore 😁 only for taste anyway 🙄🤤</p>
+
+<h2>developer.apple.com</h2>
+
+<h3>Request</h3>
+
+<pre><code>GET / HTTP/1.1
+Cookie: s_cc=true; s_fid=06DC611E7710BC19-1177BBB293539AC9; s_pathLength=developer%3D2%2C; ccl=mL+hdnG0bySpTewjKHGUDg==; geo=RU; dssf=1; dssid2=d033c26f-a51e-4b99-90e0-e628cb4a7741; POD=us~en; XID=3e7c33cdf84e902accb05faea0801e53; pxro=1; as_sfa=Mnx1c3x1c3x8ZW5fVVN8Y29uc3VtZXJ8aW50ZXJuZXR8MHwwfDE; xp_ab=1#yNFpB6B+-2+gw4eA8W1; itspod=46; xp_ci=3zr7A7KzgCz4uYzBerzQqwkjNkW; ndcd=wc1.1.w-046483.1.2.HHTLQaflIbrcKPxfoOq_AQ%252C%252C.MWuwG3_og48s60zROrfImisoWm46SV1Kz6EIjO_tUU6BmXEU0tsGQcZEqJi2pSXD63BS87Cxs4OFfEFdcgswF8q1-qPx1ftbsL5s_0j27WmvU-RVtqrRpL9cDTc9R1vTWTuUBjRZbXuFtBNiFVNzQjlbLSeZ8SXX5I95J1oaqxPMSuJuaQ-DOdYg4sJreof5
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Host: developer.apple.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.1 Safari/605.1.15
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+</code></pre>
+
+<h3>Response</h3>
+
+<pre><code>HTTP/1.1 200 OK
+Content-Type: text/html
+Access-Control-Allow-Origin: https://developer2.apple.com
+Age: 3
+X-XSS-Protection: 1; mode=block
+Content-Encoding: gzip
+Via: https/1.1 nlams2-edge-lx-012.ts.apple.com (ApacheTrafficServer/8.1.1), https/1.1 nlams2-edge-bx-016.ts.apple.com (ApacheTrafficServer/8.1.1)
+Transfer-Encoding: Identity
+Host: developer.apple.com
+Date: Thu, 19 Nov 2020 16:03:39 GMT
+Connection: keep-alive
+X-Frame-Options: SAMEORIGIN, SAMEORIGIN
+Server: Apple
+CDNUUID: 3460a472-b0c0-4192-8ebd-72b063744bc0-298851548
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+rqId: f0dd76d9a73d8c3364b42ceaa511a44b
+X-Cache: miss, miss
+</code></pre>
+
+<p>These homies really know what they're doing 🤕</p>
+
+<p>The <code>CDNUUID</code> header seems somewhat suspicious, and it turns out it's used mostly on Apple websites, such as apple.com, developer.apple.com, icloud.com (<a href="https://webtechsurvey.com/response-header/cdnuuid/websites">source</a>). My guess is that this header is used for content delivery network identification, that's all I have to say about these guys 🚬🧐</p>
+
+<h2>flickr.com</h2>
+
+<h3>Request</h3>
+
+<pre><code>:method: GET
+:scheme: https
+:authority: www.flickr.com
+:path: /
+Cookie: sp=7ed752e2-6a85-4b41-a9f1-0d79a1175170; s_ppv=sohp-slideshow-sohp-e-view%2C100%2C100%2C646; s_tp=646; vp=1396%2C646%2C1%2C0; AMCV_48E815355BFE96970A495CD0%40AdobeOrg=281789898%7CMCMID%7C90902836715653534133368140415583132745%7CMCOPTOUT-1605809421s%7CNONE%7CvVersion%7C4.1.0; _sp_id.df80=7a88cb90-1f5a-4d17-8790-229447bf848d.1605802221.1.1605802221.1605802221.968f77a9-8ffc-40d8-9185-d16022fde482; _sp_ses.df80=*; s_cc=true; s_ptc=%5B%5BB%5D%5D; _gd1605802221143=1; _asc_sesdepth=1; _uc_referrer=direct; AMCVS_48E815355BFE96970A495CD0%40AdobeOrg=1; flrbgdrp=1605118157-489c2c4f363a2b8bd473993c5bd5481dee6f51fc; flrbgmrp=1605118157-9646e6f3328334f89df181fc98eb9ededa8a84b5; flrbgrp=1605118157-9768b67a67ca0a95f0da967781c2f962e51ac5a3; flrbp=1605118157-d1331976822b3d1e0349d5bf96d41770b6a66d70; flrbrgs=1605118157-2cffe0eae4b1d2c2cb100d7c90d91d69dcbd8ef1; flrbrp=1605118157-ab01982d7b4eb59e3cfc8ad9089bb949c619f9fd; flrbrst=1605118157-b3973991ab78aabf1b6ec48d3111dc354e42df0b; flrbs=1605118157-f694fd49d83a6bd37cc75323fa57527e183d2b83; flrtags=1605118157-67e9f6580cf4a0dfec4231ed91fab49f6cc49f08; localization=en-us%3Bxx%3Bru; xb=084419
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Host: www.flickr.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.1 Safari/605.1.15
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+</code></pre>
+
+<h3>Response</h3>
+
+<pre><code>:status: 200
+Content-Type: text/html; charset=utf-8
+Pragma: no-cache
+Content-Security-Policy: style-src 'unsafe-inline' https://*.flickr.com https://*.staticflickr.com https://cdn.yahooapis.com https://yui-s.yahooapis.com https://*.braintreegateway.com https://*.sandbox.paypal.com https://*.paypal.com https://*.paypalobjects.com https://www.googletagmanager.com https://assets.adobedtm.com https://*.2o7.net https://api.digitalriver.com https://cdn.siftscience.com https://*.flickrpro.com https://securepubads.g.doubleclick.net https://adservice.google.com https://cdn.ampproject.org https://*.google.com https://*.google-analytics.com https://*.googleadservices.com https://*.doubleclick.com https://*.doubleclick.de https://*.doubleclick.net https://*.googletagservices.com https://*.googleadservices.com https://*.googlesyndication.com https://*.googleapis.com https://boards.greenhouse.io https://adserver.adtech.advertising.com https://cdn.jsdelivr.net https://js.stripe.com https://c2shb.ssp.yahoo.com https://prebid.a-mo.net https://consent.trustarc.com https://trustarc.mgr.consensu.org https://shb.richaudience.com https://sync.richaudience.com/ https://*.infolinks.com; default-src https://*.flickr.com https://*.staticflickr.com https://*.googlesyndication.com https://securepubads.g.doubleclick.net https://adservice.google.com https://cdn.ampproject.org https://consent-pref.trustarc.com; img-src data: blob: https://*.flickr.com https://*.staticflickr.com https://*.paypal.com https://*.pinterest.com https://tagmanager.google.com https://www.googletagmanager.com https://*.google.com https://*.google.de https://*.google.fr https://*.google.it https://*.google.co.uk https://*.google-analytics.com https://*.googleadservices.com https://*.googlesyndication.com https://*.doubleclick.com https://*.doubleclick.de https://*.doubleclick.net https://*.googletagservices.com https://*.googleadservices.com https://*.googlesyndication.com https://*.googleapis.com https://assets.adobedtm.com https://*.2o7.net https://hexagon-analytics.com https://*.flickrpro.com https://*.everesttech.net https://ad.turn.com https://aka-cdn.adtechus.com https://aol-match.dotomi.com https://cm.g.doubleclick.net https://ib.adnxs.com https://match.adsrvr.org https://pixel.advertising.com https://pixel.quantserve.com https://sync.mathtag.com https://x.bidswitch.net https://api.mapbox.com https://ssum.casalemedia.com https://sync.adtelligent.com https://prebid-match.dotomi.com https://rtb.openx.net https://eb2.3lift.com https://pixel.rubiconproject.com https://rtb.gamoshi.io https://ads.yieldmo.com https://sync.1rx.io https://ap.lijit.com https://prebid.adnxs.com https://dis.criteo.com https://bsw.digitru.st https://us-west-sync.bidswitch.net https://ups.analytics.yahoo.com https://htlb.casalemedia.com/ https://image2.pubmatic.com https://c2shb.ssp.yahoo.com https://prebid.a-mo.net https://consent.trustarc.com https://consent-pref.trustarc.com/ https://pr-bh.ybp.yahoo.com https://match.prod.bidr.io https://shb.richaudience.com https://sync.richaudience.com/ https://acuityplatform.com https://um.simpli.fi https://ssbsync-global.smartadserver.com https://contextual.media.net https://bh.contextweb.com https://1x1.a-mo.net https://*.infolinks.com; media-src https://*.flickr.com https://*.staticflickr.com https://*.flickrpro.com; script-src 'unsafe-eval' 'unsafe-inline' 'nonce-7d2d59b742a7888433304e18288cfd8e' https://*.flickr.com https://*.staticflickr.com https://cdn.yahooapis.com https://yui-s.yahooapis.com https://*.braintreegateway.com https://*.sandbox.paypal.com https://*.paypal.com https://*.paypalobjects.com https://www.googletagmanager.com https://assets.adobedtm.com https://*.2o7.net https://api.digitalriver.com https://cdn.siftscience.com https://*.flickrpro.com https://securepubads.g.doubleclick.net https://adservice.google.com https://cdn.ampproject.org https://*.google.com https://*.google-analytics.com https://*.googleadservices.com https://*.doubleclick.com https://*.doubleclick.de https://*.doubleclick.net https://*.googletagservices.com https://*.googleadservices.com https://*.googlesyndication.com https://*.googleapis.com https://boards.greenhouse.io https://adserver.adtech.advertising.com https://cdn.jsdelivr.net https://js.stripe.com https://c2shb.ssp.yahoo.com https://prebid.a-mo.net https://consent.trustarc.com https://trustarc.mgr.consensu.org https://shb.richaudience.com https://sync.richaudience.com/ https://*.infolinks.com; connect-src https://*.flickr.com https://*.staticflickr.com https://cdn.yahooapis.com https://yui-s.yahooapis.com http://api.flickr.com https://*.pinterest.com https://*.braintreegateway.com https://*.braintree-api.com https://*.sandbox.paypal.com https://*.paypal.com https://*.paypalobjects.com https://tagmanager.google.com https://www.googletagmanager.com https://assets.adobedtm.com https://*.2o7.net https://cdn.siftscience.com https://store.digitalriver.com https://*.flickrpro.com https://*.demdex.net https://securepubads.g.doubleclick.net https://*.googlesyndication.com https://api.greenhouse.io https://*.flickrprints.net https://*.flickrprints.com https://csi.gstatic.com https://prebid.adnxs.com https://tlx.3lift.com https://*.adtech.advertising.com https://grid.bidswitch.net https://fastlane.rubiconproject.com https://hbopenbid.pubmatic.com https://as-sec.casalemedia.com https://ib.adnxs.com/ut/v3/prebid https://gum.criteo.com https://prg.smartadserver.com https://ice.360yield.com https://mug.criteo.com https://api.stripe.com https://c2shb.ssp.yahoo.com https://htlb.casalemedia.com/ https://prebid.a-mo.net https://consent.trustarc.com https://shb.richaudience.com https://sync.richaudience.com/ https://consent-pref.trustarc.com https://*.infolinks.com https://api.intentiq.com/; frame-src https://*.flickr.com https://combo.staticflickr.com https://*.braintreegateway.com https://*.sandbox.braintreegateway.com https://assets.braintreegateway.com/ https://*.paypal.com https://*.paypalobjects.com https://assets.adobedtm.com https://*.2o7.net https://tpc.googlesyndication.com https://*.doubleclick.net/ https://adservice.google.com https://cdn.ampproject.org https://boards.greenhouse.io https://ads.pubmatic.com https://ssum-sec.casalemedia.com https://www.googletagservices.com/pubconsole/ https://eb2.3lift.com https://eus.rubiconproject.com/ https://*.safeframe.googlesyndication.com/safeframe/ https://*.tynt.com/ https://*.adnxs.com/ https://*.indexww.com/ https://csync.smartadserver.com/ https://js.stripe.com https://hooks.stripe.com https://c2shb.ssp.yahoo.com https://prebid.a-mo.net https://consent-pref.trustarc.com https://trustarc.mgr.consensu.org/ https://sync.richaudience.com/ https://shb.richaudience.com https://www.youtube.com/embed/dEneeOyqu54 https://*.infolinks.com; child-src https://*.flickr.com https://combo.staticflickr.com https://*.braintreegateway.com https://*.sandbox.braintreegateway.com https://assets.braintreegateway.com/ https://*.paypal.com https://*.paypalobjects.com https://assets.adobedtm.com https://*.2o7.net https://tpc.googlesyndication.com https://*.doubleclick.net/ https://adservice.google.com https://cdn.ampproject.org https://boards.greenhouse.io https://ads.pubmatic.com https://ssum-sec.casalemedia.com https://www.googletagservices.com/pubconsole/ https://eb2.3lift.com https://eus.rubiconproject.com/ https://*.safeframe.googlesyndication.com/safeframe/ https://*.tynt.com/ https://*.adnxs.com/ https://*.indexww.com/ https://csync.smartadserver.com/ https://js.stripe.com https://hooks.stripe.com https://c2shb.ssp.yahoo.com https://prebid.a-mo.net https://consent-pref.trustarc.com https://trustarc.mgr.consensu.org/ https://sync.richaudience.com/ https://shb.richaudience.com https://www.youtube.com/embed/dEneeOyqu54 https://*.infolinks.com; font-src https://*.staticflickr.com https://*.flickr.com https://consent.trustarc.com data:; worker-src blob:; form-action https://*.flickr.com https://*.flickrpro.com;
+Vary: Accept-Encoding
+Set-Cookie: mobile_allow_www=; Domain=.flickr.com; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT
+X-XSS-Protection: 1; mode=block
+Content-Encoding: gzip
+Via: 1.1 9c3701a40f5e4766165113d719972734.cloudfront.net (CloudFront)
+Cache-Control: no-cache, max-age=0, must-revalidate, no-store
+Date: Thu, 19 Nov 2020 16:10:24 GMT
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+x-amz-cf-id: pwR4xK3yd0_N1F4Gpz3DOdCkEOCpt0TsHsTq4JiLr-748XbwjyPLeA==
+x-amz-cf-pop: ARN1-C1
+x-request-id: 1efc7200
+x-cache: Miss from cloudfront
+</code></pre>
+
+<p><code>'unsafe-inline'</code> allows the use of inline resources, such as inline <code>&lt;script&gt;</code> elements, javascript: URLs, inline event handlers, and inline <code>&lt;style&gt;</code> elements. The single quotes are required.</p>
+
+<blockquote>
+<p><code>x-amz-cf-pop: ARN1-C1</code></p>
+
+<p><code>x-request-id: 1efc7200</code></p>
+</blockquote>
+
+<p>This website also has fingerprints of Amazon Content Delivery Network and it seems it's located in Stockholm Arlanda Airport (<a href="https://www.feitsui.com/en/article/3]">source</a>). BTW it looks <a href="https://www.swedavia.com/future-airports/stockholm-arlanda-airport/Airport-city/">great</a>.</p>
+
+<h2>vc.ru</h2>
+
+<h3>Request</h3>
+
+<pre><code>:method: GET
+:scheme: https
+:authority: vc.ru
+:path: /
+Cookie: audio_player_volume=0.75; is_news_widget_closed=false; adblock-state=; last-recent-seen=1605684817; fingerprint=eo9HTQYStgirDJluCZiE1pOA4K4emlfiKSw4rkLF; is_webp_supported=1; static_version_timestamp=1605279752; osnova-aid=CvQKD1+P4DQfaQAGBp6OAg==
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Host: vc.ru
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.1 Safari/605.1.15
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+</code></pre>
+
+<h3>Response</h3>
+
+<pre><code>:status: 200
+Content-Type: text/html;charset=UTF-8
+Content-Security-Policy: default-src * data: blob: 'unsafe-eval' 'unsafe-inline'
+X-XSS-Protection: 1; mode=block
+Content-Encoding: gzip
+Referrer-Policy: origin-when-cross-origin
+Cache-Control: no-cache, private
+Date: Thu, 19 Nov 2020 16:17:57 GMT
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Vary: Accept-Encoding
+x-request-time: 174,52597618103
+x-nginx-cache: HIT
+Strict-Transport-Security: max-age=31536000; preload
+</code></pre>
+
+<p>Well for me there's nothing unusual except <code>audio_player_volume=0.75</code> which obviously sets audio player volume to 75% 🧚‍♀️</p>
+
+<h2>lot2046.com 🏴</h2>
+
+<h3>Request</h3>
+
+<pre><code>GET / HTTP/1.1
+Cookie: __stripe_mid=42842491-6c67-421a-8601-d42efc3dd35adf0945; __stripe_sid=470bd555-5a3d-445c-882c-43e18a8c96fde0c98e; connect.sid=s%3AHgQssx-_aV9V6vyQmsmNOwOJ8OBr_kl9.53Z%2F8EOIn%2BPgmb%2F%2FKwmr6eJzNQvCzv9NoGsrEc41fJE
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Host: www.lot2046.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.1 Safari/605.1.15
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+</code></pre>
+
+<h3>Response</h3>
+
+<pre><code>HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+X-XSS-Protection: 1; mode=block
+Via: 1.1 vegur
+Date: Thu, 19 Nov 2020 16:20:12 GMT
+Content-Length: 49948
+Connection: keep-alive
+Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline' https://ajax.googleapis.com https://cdn.jsdelivr.net/npm/vue https://cdnjs.cloudflare.com https://js.stripe.com https://maxcdn.bootstrapcdn.com https://scrollmagic.io https://unpkg.com https://www.google-analytics.com https://www.googletagmanager.com; style-src 'self' https://maxcdn.bootstrapcdn.com https://cdnjs.cloudflare.com; img-src 'self' data: https://lot2046-images.s3.amazonaws.com https://scontent.cdninstagram.com https://www.google-analytics.com; font-src 'self' data: https://maxcdn.bootstrapcdn.com; child-src https://w.soundcloud.com https://www.youtube.com https://player.twitch.tv https://js.stripe.com; connect-src 'self' https://www.google-analytics.com; report-uri https://lot2046.report-uri.com/r/d/csp/reportOnly
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Frame-Options: SAMEORIGIN
+ETag: W/&quot;c31c-bMsJ15cUEeNc9Dc8Px42+EQ9tHM&quot;
+Server: Cowboy
+X-Download-Options: noopen
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+</code></pre>
+
+<p>This website uses <code>Cowboy</code> as its HTTP server, the author of the server states that the:</p>
+
+<blockquote>
+<p>Cowboy aims to provide a complete HTTP stack in a small code base. It is optimized for low latency and low memory usage, in part because it uses binary strings.</p>
+
+<p>Cowboy provides routing capabilities, selectively dispatching requests to handlers written in Erlang.</p>
+
+<p>Because it uses Ranch for managing connections, Cowboy can easily be embedded in any other application.</p>
+
+<p>Cowboy is clean and well tested Erlang code.</p>
+</blockquote>
+
+<p>And <code>Vegur</code> as its proxy library which has a trace of Heroku deployment (though I'm not sure about that).</p>
+
+<p>The website also seems to use <a href="stripe.com">stripe.com</a> as its solution for card payments which is OK though they still don't support Pay and I think it's intentional.</p>
+
+<p>We are 2046 kids 🏴</p>
+
+<h2>opeanai.com</h2>
+
+<h3>Request</h3>
+
+<pre><code>:method: GET
+:scheme: https
+:authority: openai.com
+:path: /
+Cookie: __cflb=02DiuCzDjsTNptQXPzsE4eZ4sKasgpcwPjMNndZyG2xha
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Host: openai.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.1 Safari/605.1.15
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+</code></pre>
+
+<h3>Response</h3>
+
+<pre><code>:status: 200
+Content-Encoding: gzip
+Set-Cookie: __cfduid=d7268dd4555404946eca84d0f73a3bdc31605803125; expires=Sat, 19-Dec-20 16:25:25 GMT; path=/; domain=.ghost.io; HttpOnly; SameSite=Lax
+Cache-Control: public, max-age=0
+Accept-Ranges: bytes
+Content-Length: 7605
+Via: 1.1 9b9ff06545217fe747384bd8b8509aa4.cloudfront.net (CloudFront)
+Vary: Accept-Encoding
+Date: Thu, 19 Nov 2020 16:25:25 GMT
+Content-Type: text/html; charset=utf-8
+ETag: W/&quot;6fab-lhb0BKkP0eicDx1ZD30lZTAj0Qs&quot;
+Age: 65661
+Server: cloudflare
+Status: 200 OK
+x-amz-cf-id: -G-uKrWYsIzoV_bd7ljpOCYyA-sFjI9xoekeR1F-2xYHyzzARJltew==
+x-amz-cf-pop: ARN1-C1
+cf-request-id: 0682ec43b40000caf00924f000000001
+x-request-id: 32b679d254c2523246500b2284927b4c, f9cb0fc7bb4b3fc2982f64d6f807686d
+expect-ct: max-age=604800, report-uri=&quot;https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct&quot;
+x-cache: Miss from cloudfront
+cf-cache-status: DYNAMIC
+cf-ray: 5f4b497f8cc8caf0-ARN
+</code></pre>
+
+<p>So... this website seems to use the same CloudFront server as Flickr, and it also seems to CloudFlare for protection from all sorts of attacks. BTW this website only has ONE (1!) tracker on it so that's great ✨</p>
+
+<h2>github.com</h2>
+
+<h3>Request</h3>
+
+<pre><code>GET / HTTP/1.1
+Cookie: __Host-user_session_same_site=WNLZipscMa_7nf1ryF85Mx7ECq7edbCpY-lj_XVeDydWCzbu; _gh_sess=S59UE0VKJyZWclUHQmoOAqm%2BnOr5unru04PW%2F7m%2F%2FsFaiyUmeunL8vMm5Tnx9sfcsqP6SzZIKBI%2FpsMXDf9mCVkYnopL1g4zHC8W2XSBalFFj1k16RLeNVsBzDcJQWEVaTIS10jAUNESpUuV1rsmzdKOOoji%2BQ3QnOxHLI%2FZiw6sH6tCaPXNX%2FhHGUvs%2BLm8%2Fp%2B2bwm0m%2BxVKgXpjfMZgwpcegeKrD2ha6wAuSmdq3evguTXaY3iSPJUcg3xqJv37ZzwaSLTTKs0Yhc6NXb9I42m0RF12ZE2e%2B%2B7tJE41Be2RYge%2B31rnIrNtphD0ngI79t07VOqTYUr7h4MZ%2Fm%2F70krwZ1GV5%2Fq6%2BU9XEkYGtH%2FGsEgJZH7bFK6gPGtst9ldWOnOU%2BEmVQoYa8VOG198%2FH%2BGMQEXW9Iki0%2F5LfHbwaIxjFuIFtf%2Fg%2BCJrB5tuit4nTarIuBHGUxScGcRhcLX46%2BLql7OYawn96A%2FZqIuS4XLcup6%2BHz7%2FdATKiYJfiXAPnPPpYjPlcK%2B7uo2Jdul1JdGWNCnxowyrCFjfMwso54NxaEu36IwsxoL4cBHIgvi4HS3Gm738EAu42EqDzhFTZRKhvv%2BW8qLknks3u82Dh%2FzgVu%2FjUhb4A0BrlTUCLsStJuQ6OUGIQtegQ1a0PYGdZHS%2B3u2nzlUzbc7rC2nfTjMmzefu3N0DT9fPytC8k8Zq2t5g0CI6u8SblGowRB%2B1m3Uku69SL19KGG34SPIOclXCZIYAUPve17hVqja7c5%2FgKE1OSJwRPVdSSGCWXSJ%2BKC00aKTBtu9JuTN%2Fkgo%2BFcAwkhPikYjfgZEx%2Fm5UuJIrxb3r%2BnlHneZJF737YABlnzxxQ%3D--aJk2otox%2FU92ZPU2--TBYObbh8Ey7lnaucn7DZcA%3D%3D; has_recent_activity=1; user_session=WNLZipscMa_7nf1ryF85Mx7ECq7edbCpY-lj_XVeDydWCzbu; tz=Asia%2FVladivostok; dotcom_user=terriblegoodday; logged_in=yes; _device_id=b89f21feef5eda5c45f5fff8076e5a8f; _octo=GH1.1.247916901.1603246184
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Host: github.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.1 Safari/605.1.15
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+</code></pre>
+
+<h3>Response</h3>
+
+<pre><code>HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+Vary: X-PJAX, Accept-Encoding, Accept, X-Requested-With, Accept-Encoding
+Content-Security-Policy: default-src 'none'; base-uri 'self'; block-all-mixed-content; connect-src 'self' uploads.github.com www.githubstatus.com collector.githubapp.com api.github.com github-cloud.s3.amazonaws.com github-production-repository-file-5c1aeb.s3.amazonaws.com github-production-upload-manifest-file-7fdce7.s3.amazonaws.com github-production-user-asset-6210df.s3.amazonaws.com cdn.optimizely.com logx.optimizely.com/v1/events wss://alive.github.com; font-src github.githubassets.com; form-action 'self' github.com gist.github.com; frame-ancestors 'none'; frame-src render.githubusercontent.com; img-src 'self' data: github.githubassets.com identicons.github.com collector.githubapp.com github-cloud.s3.amazonaws.com *.githubusercontent.com customer-stories-feed.github.com spotlights-feed.github.com; manifest-src 'self'; media-src github.githubassets.com; script-src github.githubassets.com; style-src 'unsafe-inline' github.githubassets.com; worker-src github.com/socket-worker.js gist.github.com/socket-worker.js
+Set-Cookie: user_session=WNLZipscMa_7nf1ryF85Mx7ECq7edbCpY-lj_XVeDydWCzbu; path=/; expires=Thu, 03 Dec 2020 16:29:33 GMT; secure; HttpOnly; SameSite=Lax, __Host-user_session_same_site=WNLZipscMa_7nf1ryF85Mx7ECq7edbCpY-lj_XVeDydWCzbu; path=/; expires=Thu, 03 Dec 2020 16:29:33 GMT; SameSite=Strict; secure; HttpOnly, has_recent_activity=1; path=/; expires=Thu, 19 Nov 2020 17:29:33 GMT; secure; HttpOnly; SameSite=Lax, _gh_sess=jluBKGYzgZlW9edA8LrAh2JU%2BzhykEbG7CAuqgy4MJdX2dNiWbj%2FCzmDzs1cOwzp%2F%2FDXPRMpe%2B%2BjoaB3GXgKjj4RdCR5FRbQBC2W3sD0P9cKbylCHb8eRZLSyhj87iIcLn35KVTg%2Fwic4zvg7mQP0cNvQOxRK8FCzW%2FTA%2BdFVhUNatL13BDNKbeEAI8EVcxiEtApsVZD7Bx4fEvvql7VG5ugjcX%2FzA6MAg92GCErYGisbIUgHz3lOcK6y3KGFKZp0Kc1dhw6Iz91H4%2F%2BTLmkQGO4p6g45Y0qMLb7xyfrpLGl8byuP6DYfSfseKhPerZawJAMTMTOwhXyldatfBj8aRH9ykusBmFDog6pKDjfCiK1pNU1Y5iPCVeGSJXt8QkF4y8Ha1lAUCbrXWb9kKDxj4TaowtEESO6Wxd0dX%2F8ZrzAR85PSRM6zhiltyehZ0QeYjz%2BOrCp5t3LXZg4d3aJgoY3NEX6oaLpdlOAFtUL%2Bs40xo9%2BzyRKvkTxiCPMcYdSVNGrevlk5ByBaBj9zEHvwlZj4FTM43XM87CNoLX8QQMQKBKxcv416ZOMDxI%2BEc%2BeoUofHrMGYdYeinKIVwL3DVmnIk3fhVGmrhelwsDEx4dBR%2BE3Z4nXX%2FURyruwiX%2BwPy%2BAu34iwBx7i9CBECo2DcyT3xpkk1cnQt3W5kfsMxIaAm0fhGQ17Fmw9ke9tKTV5ZGrwseMow5C5GfVw%2FBtUUZxWM0Pwjc%2FXIIZYBd3EDPb40UvUwCEoR1dJjROJGHS1qoCIVf0KsN4OzgAS0%2BjcEzNGzO5x0gUgVwbbXH1gZrrOb9Gnszi9OL2KckDeAcayKgABliMj2WcMfc61WjYV9ERnjA%3D--hbY5Fd%2FPqJt8KWMz--AzQtmimr20Myenz2RAxqtg%3D%3D; path=/; secure; HttpOnly; SameSite=Lax
+X-XSS-Protection: 1; mode=block
+Transfer-Encoding: Identity
+Content-Encoding: gzip
+Referrer-Policy: origin-when-cross-origin, strict-origin-when-cross-origin
+Cache-Control: max-age=0, private, must-revalidate
+Date: Thu, 19 Nov 2020 16:29:33 GMT
+X-Content-Type-Options: nosniff
+ETag: W/&quot;4080fd64a19b12d48baf3878a36a501b&quot;
+X-Frame-Options: deny
+Server: GitHub.com
+Expect-CT: max-age=2592000, report-uri=&quot;https://api.github.com/_private/browser/errors&quot;
+X-GitHub-Request-Id: D2E0:EB2F:103FA20:16CD37A:5FB69D6C
+Strict-Transport-Security: max-age=31536000; includeSubdomains; preload
+Status: 200 OK
+</code></pre>
+
+<p>On <code>Expect-CT</code>:</p>
+
+<blockquote>
+<p>Certificate Transparency is an open framework designed to protect against and monitor for certificate misissuances. Newly issued certificates are 'logged' to publicly run CT logs which maintain an append-only, cryptographically assured record of issued TLS certificates.</p>
+</blockquote>
+
+<p>By the way Github has NO TRACKERS 😳 WoW 😮 please don't ruin my vibe and diminish my supply 😝</p>
+
+<h2>soundcloud.com</h2>
+
+<h3>Request</h3>
+
+<pre><code>GET /discover HTTP/1.1
+Cookie: ja=0; connect_session=1; soundcloud_session_hint=1; _fbp=fb.1.1605318932068.770789354; ab.storage.sessionId.2c0ba43c-af74-488e-9dfd-b87280e02a92=%7B%22g%22%3A%229322e0a4-42bf-3a15-a20a-42448bec446e%22%2C%22e%22%3A1605333415439%2C%22c%22%3A1605331615419%2C%22l%22%3A1605331615439%7D; _ga=GA1.2.733248264.1605320776; __qca=P0-1828906464-1605318932261; ab.storage.deviceId.2c0ba43c-af74-488e-9dfd-b87280e02a92=%7B%22g%22%3A%224277b413-7460-cf9c-2554-f9fdc59fd216%22%2C%22c%22%3A1605318930889%2C%22l%22%3A1605318930889%7D; ab.storage.userId.2c0ba43c-af74-488e-9dfd-b87280e02a92=%7B%22g%22%3A%22c291bmRjbG91ZDp1c2VyczoyMjEzMTQ0NzM%3D%22%2C%22c%22%3A1605318930887%2C%22l%22%3A1605318930887%7D; oauth_token=2-290059-221314473-hpF4FtuVE3VXCt; sc_anonymous_id=783289-346621-810339-471839; legacy_clean=1; sclocale=en
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+Host: soundcloud.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.1 Safari/605.1.15
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+</code></pre>
+
+<h3>Response</h3>
+
+<pre><code>HTTP/1.1 200 OK
+Content-Type: text/html
+Server-Timing: me; dur=479.687357; desc=&quot;api-v2/me&quot;, experiments; dur=15.787148; desc=&quot;api-v2/experiments&quot;, privacySettings; dur=30.154578; desc=&quot;api-v2/privacySettings&quot;, geoip; dur=3.188917; desc=&quot;geoip/geoip&quot;, enabledFeatures; dur=16.629538; desc=&quot;api-v2/enabledFeatures&quot;
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+Content-Encoding: gzip
+Transfer-Encoding: Identity
+Via: 1.1 8b82a0c44466382daf259dbb61c8f23c.cloudfront.net (CloudFront)
+Cache-Control: private, max-age=0, no-cache, no-store
+Date: Thu, 19 Nov 2020 16:32:46 GMT
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Amz-Cf-Id: aWRNrVvdjuefGVCvxijN38NAMa8tFKigp9l818QnP9lnM1Do1XCCLg==
+Server: am/2
+X-Amz-Cf-Pop: ARN1-C1
+X-Pants: distant-towel
+Strict-Transport-Security: max-age=63072000; includeSubdomains; preload
+X-Cache: Miss from cloudfront
+</code></pre>
+
+<p>SoundCloud also uses CloudFront as its CDN and it has a peculiar header: <code>X-Pants: distant-towel</code>. Juicy 💦.</p></div>
+</body>
+</html>
